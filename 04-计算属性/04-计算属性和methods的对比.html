@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计算属性和methods的对比</title>
+</head>
+<body>
+
+<div id="app">
+  <!--1.直接拼接：语法过于繁琐-->
+  <h2>{{firstName}} {{lastName}}</h2>
+  <!--2.通过定义methods-->
+<!--  <h2>{{getFullName()}}</h2>-->
+<!--  <h2>{{getFullName()}}</h2>-->
+<!--  <h2>{{getFullName()}}</h2>-->
+<!--  <h2>{{getFullName()}}</h2>-->
+
+  <!--3.通过computed-->
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好哇',
+      firstName: 'Kobe',
+      lastName: 'Bryant'
+    },
+    methods: {
+      getFullName: function () {
+        console.log('getFullName');
+        return this.firstName + ' ' + this.lastName;
+      }
+    },
+    // 在需要将data中的数据做一个变化，然后显示到页面上时，选择使用计算属性
+    computed: {
+      fullName: function () {
+        console.log('fullName');
+        return this.firstName + ' ' + this.lastName;
+      }
+    }
+
+  })
+</script>
+
+</body>
+</html>
