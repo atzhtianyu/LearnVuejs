@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-model修饰符的使用</title>
+</head>
+<body>
+
+<div id="app">
+  <!--1.修饰符：lazy在失去焦点或回车的时候改变-->
+  <input type="text" v-model.lazy="message">
+  <h3>{{message}}</h3>
+
+  <!--2.修饰符：number 默认情况下，v-model返回的值是string类型，number解决输入number类型的情况-->
+  <input type="number" v-model.number="age">
+  <h3>{{typeof age}}</h3>
+
+  <!--3.修饰符：trim 去掉前后的空格-->
+  <input type="text" v-model.trim="name">
+  <h3>您输入的名字：{{name}}</h3>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好哇',
+      age: 23,
+      name: ''
+    }
+  })
+</script>
+
+</body>
+</html>
